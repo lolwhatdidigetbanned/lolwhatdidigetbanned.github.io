@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Maze Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        canvas { border: 1px solid #000; }
+    </style>
+</head>
+<body>
+    <h1>Multiplayer Maze Game</h1>
+    <canvas id="mazeCanvas" width="600" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('mazeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const maze = [
+            [0, 1, 0, 0],
+            [0, 1, 0, 1],
+            [0, 0, 0, 0],
+            [1, 1, 1, 0]
+        ];
+
+        function drawMaze() {
+            const cellSize = 30;
+            for (let y = 0; y < maze.length; y++) {
+                for (let x = 0; x < maze[y].length; x++) {
+                    if (maze[y][x] === 1) {
+                        ctx.fillStyle = 'black';
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                    } else {
+                        ctx.strokeStyle = 'gray';
+                        ctx.strokeRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                    }
+                }
+            }
+        }
+
+        drawMaze();
+    </script>
+</body>
+</html>
